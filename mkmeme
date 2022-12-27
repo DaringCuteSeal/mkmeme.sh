@@ -47,7 +47,7 @@ done
 
 width=`identify -format %w ${src}`
 let caption_height=width/8
-let strokewidth=width/400
+let strokewidth=width/450
 
 ifnempty(){
 	[[ -n "$1" ]] && echo "$2"
