@@ -11,28 +11,19 @@ command which are conducive to applying captions to images.
 
 Good luck ruling the Interwebs!
  
-## Install ImageMagick
- 1. `brew install imagemagick`
+## Dependencies
+This script requires:
+1. [ImageMagick](https://www.imagemagick.org/)
+2. `sh` provider, e.g [bash](https://www.gnu.org/software/bash/bash.html).
 
 ## Run the Shell Script
- 1. `./meme.sh duck.jpg test.jpg "Top Caption" "Bottom Caption"`
- 
-## Run the Ruby Script
- 1. `./meme.rb --src duck.jpg --dest test.jpg --north "Top" --center "Middle" --south "Bottom"`
+Example:
+```bash
+./mkmeme cat.jpg cat-test.jpg -top "When someone asks about your glasses" -bot "And touches the lens" -tcolor white -tborder black
+```
 
-## What's it Doing?
-<img class="pure-img" src="readme-annotated.png" alt="Annotated Source">
-
-### Source
- 1. `meme.sh`
- 2. `meme.rb`
-
-## [Optional] OSX Users Might Want Setup Font Registry
- 1. `mkdir $HOME/.config/ImageMagick`
- 2. `cd path/to/here`
- 3. `./typemap_gen.rb /Library/Fonts/*.ttf > $HOME/.config/ImageMagick/type.xml`
-
-
+Output:
+<img src="cat-meme.jpg" height=300px></img>
 
 Thanks
 ======
@@ -40,14 +31,4 @@ ImageMagick
 :  http://www.imagemagick.org/Usage/annotating/
 
 Wikimedia
-:  https://commons.wikimedia.org/wiki/File:Cute_South_African_Duck.JPG
-
-YUI Pure CSS
-:  http://purecss.io/base/
-
-# Maintence
-## Generate index.html
-`index.html` is used for gh-pages. If this README.md is changed, you should
-updated the `index.html` file using: `pandoc README.md -c readme.css -o index.html`
-
-`brew install pandoc` if you don't have it already.
+:  https://commons.wikimedia.org/wiki/File:Gato_enervado_pola_presencia_dun_can.jpg

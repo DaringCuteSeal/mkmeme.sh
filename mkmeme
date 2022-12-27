@@ -1,0 +1,64 @@
+#!/bin/sh
+
+printhelp(){
+	cat << EOF
+Usage: ${0##*/} <input image> <output image> -top <text> -bot <text> -tcolor <color> -tborder <color>
+Example:
+  ${0##*/} input.png output.png -top "Top text" -bot "Bottom text" -tcolor white -tborder black
+EOF
+}
+
+if [[ $# -lt 3 ]]
+then
+	printhelp
+	exit 1
+fi
+
+src=$1
+dest=$2
+
+shift 2
+while [[ $# -gt 0 ]]
+do
+	case "$1" in
+		"-top")
+			header="$2"
+			shift 2
+			;;
+		"-bot")
+			footer="$2"
+			shift 2
+			;;
+		"-tcolor")
+			color="$2"
+			shift 2
+			;;
+		"-tborder")
+			border="$2"
+			shift 2
+			;;
+		*)
+			printhelp
+			exit 1
+			;;
+	esac
+done
+
+
+width=`identify -format %w ${src}`
+let caption_height=width/8
+let strokewidth=width/400
+
+ifnempty(){
+	[[ -n "$1" ]] && echo "$2"
+}
+
+convert "${src}"\
+  -background none              \
+  -fill "${color:-white}"      \
+  -stroke "${border:-black}"   \
+  -strokewidth ${strokewidth}   \
+  -size ${width}x${caption_height}  \
+  -gravity north caption:"${header}" -composite \
+  -gravity south caption:"${footer}" -composite \
+  "${dest}"
