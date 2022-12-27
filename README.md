@@ -23,6 +23,7 @@ Example:
 ```
 
 Output:
+
 <img src="cat-meme.jpg" height=300px></img>
 
 Thanks
